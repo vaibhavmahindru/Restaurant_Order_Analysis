@@ -1,0 +1,48 @@
+-- Objective 1
+-- Explore the items table
+
+-- number of items in menu table
+
+select count(*)
+from menu_items;
+
+-- least and most expensive item
+
+-- most expensive 
+select item_name, price
+from menu_items
+order by price desc
+limit 1;
+
+-- least expensive
+select item_name, price
+from menu_items
+order by price asc
+limit 1;
+
+-- How many Italian dishes are on the menu? 
+
+select count(*)
+from menu_items
+where category = 'Italian';
+
+-- What are the least and most expensive Italian dishes on the menu?
+
+select item_name, category, price
+from menu_items
+where category = 'Italian'
+order by price desc;
+
+-- How many dishes are in each category? 
+
+select category, count(item_name)
+from menu_items
+group by category;
+
+-- What is the average dish price within each category?
+
+select category, 
+count(item_name),
+round(avg(price),2)
+from menu_items
+group by category;
